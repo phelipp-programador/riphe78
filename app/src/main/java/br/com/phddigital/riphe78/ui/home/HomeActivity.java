@@ -21,11 +21,13 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     private RecyclerView rvCategoria;
     private RecyclerView rvPromocao;
     private RecyclerView rvDestaque;
+    private HomePresenter presenter;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         initializer();
+
     }
 
 
@@ -46,6 +48,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     @Override
     public void initializer() {
+        presenter = new HomePresenter(this);
         this.viewPromocoes = findViewById(R.id.promocao);
         this.viewCategorias = findViewById(R.id.categoria);
         this.viewDestaques = findViewById(R.id.item);
@@ -55,9 +58,15 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         ((TextView) this.viewPromocoes.findViewById(R.id.txt_title)).setText(getBaseContext().getString(R.string.title_card_promocao));
         ((TextView) this.viewCategorias.findViewById(R.id.txt_title)).setText(getBaseContext().getString(R.string.title_card_categoria));
         ((TextView) this.viewDestaques.findViewById(R.id.txt_title)).setText(getBaseContext().getString(R.string.title_card_destaque));
+        presenter.listarCategoria();
+        presenter.listarDestaques();
+        presenter.listarPromocoes();
 
     }
 
-
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.viewDestroy();
+    }
 }

@@ -7,9 +7,9 @@ import br.com.phddigital.riphe78.mvp.MVP;
 public interface PesquisaContract {
    interface ViewImple{
         void initializer();
+        void visualisarPesquisa(ItemAdapter adapter);
    }
    interface Presenter extends MVP.Presenter {
-       void listarPromocoes();
-       void listarProdutos();
+       void listarItem();
    }
 }

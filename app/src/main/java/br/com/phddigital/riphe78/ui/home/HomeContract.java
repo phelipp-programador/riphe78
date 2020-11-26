@@ -19,6 +19,7 @@ public interface HomeContract {
    }
    interface Presenter extends MVP.Presenter {
        void listarPromocoes();
-       void listarProdutos();
+       void listarDestaques();
+       void listarCategoria();
    }
 }
