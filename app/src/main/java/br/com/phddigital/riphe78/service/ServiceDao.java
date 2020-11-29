@@ -1,18 +1,19 @@
 package br.com.phddigital.riphe78.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import br.com.phddigital.riphe78.mvp.MVP;
 
 public interface ServiceDao<T extends MVP.Model> {
-    void save(T entity);
+    Optional<T> save(T entity);
 
-    void update(Integer id, T newEntity);
+    Optional<T> update(Integer id, T newEntity);
 
-    List<T> select();
+    Optional<List<T>> select();
 
-    T select(Integer id);
+    Optional<T> select(Integer id);
 
-    void delete(Integer id);
+    Optional<Boolean> delete(Integer id);
 
 }

@@ -1,6 +1,9 @@
 package br.com.phddigital.riphe78.ui.pesquisa;
 
+import android.widget.EditText;
+
 import java.util.List;
+import java.util.Optional;
 
 import br.com.phddigital.riphe78.adapter.CategoriaAdapter;
 import br.com.phddigital.riphe78.adapter.ItemAdapter;
@@ -30,7 +33,14 @@ public class PesquisaPresenter implements PesquisaContract.Presenter {
     }
 
     @Override
-    public void listarItem() {
-        pesquisaService.select();
+    public void listarItem(String text) {
+        Optional<List<Item>> itens = pesquisaService.selectWhere(text);
+        if(itens.isPresent()){
+            ItemAdapter itemAdapter = new ItemAdapter(itens.get());
+            view.visualisarPesquisa(itemAdapter);
+        }
+        else{
+            view.notFound();
+        }
     }
 }

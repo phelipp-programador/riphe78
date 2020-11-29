@@ -1,27 +1,28 @@
 package br.com.phddigital.riphe78.data;
 
 import java.util.List;
+import java.util.Optional;
 
 import br.com.phddigital.riphe78.domain.Categoria;
+import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.DELETE;
+import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
 
-public class CategoriaResources implements ResourceDao<Categoria> {
-    @Override
-    public void save(Categoria entity) {
+public interface CategoriaResources  {
 
-    }
+    @POST("categoria")
+    public Call<Categoria> save(@Body Categoria entity) ;
 
-    @Override
-    public void update(Integer id, Categoria newEntity) {
+    @GET("categoria")
+    public Call<Optional<List<Categoria>>> select();
 
-    }
+    @PUT("categoria/{id}")
+    public Call<Categoria>   update(@Path("id") Integer id, @Body Categoria newEntity) ;
 
-    @Override
-    public List<Categoria> select() {
-        return null;
-    }
-
-    @Override
-    public void delete(Integer id) {
-
-    }
+    @DELETE("categoria/{id}")
+    public Call<Boolean> delete(@Path("id") Integer id) ;
 }

@@ -7,7 +7,7 @@ import lombok.Data;
 public class Item implements MVP.Model{
     private Long id;
     private String nome;
-    private Double valor;
+    private double valor;
     private String urlImage;
     private Loja loja;
 

@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "br.com.phddigital.riphe78"
-        minSdkVersion 23
+        minSdkVersion 24
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -39,6 +39,11 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'com.beardedhen:androidbootstrap:2.3.2'
 
+    implementation 'com.google.code.gson:gson:2.8.6'
+    // Retrofit & OkHttp
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    // JSON Converter
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
     compileOnly 'org.projectlombok:lombok:1.18.16'
     annotationProcessor 'org.projectlombok:lombok:1.18.16'
     implementation 'com.squareup.picasso:picasso:2.71828'
