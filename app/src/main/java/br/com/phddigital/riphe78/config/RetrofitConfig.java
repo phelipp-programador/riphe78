@@ -9,17 +9,20 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class RetrofitConfig  {
-      final String baseUrl="";
-     private final Retrofit retrofit;
+      private static final String baseUrl="http://192.168.0.103:3000/api/";
+     private static Retrofit retrofit;
 
-    public RetrofitConfig() {
-        retrofit =
-                new Retrofit.Builder()
-                       .baseUrl(baseUrl)
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
+    private  RetrofitConfig() {
     }
-   public Retrofit getRetrofit(){
+
+    public static Retrofit factory(){
+        if(retrofit ==null){
+            retrofit =
+                    new Retrofit.Builder()
+                            .baseUrl(baseUrl)
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build();
+        }
         return retrofit;
     }
 

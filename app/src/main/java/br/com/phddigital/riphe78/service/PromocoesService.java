@@ -3,37 +3,17 @@ package br.com.phddigital.riphe78.service;
 import java.util.List;
 import java.util.Optional;
 
-import br.com.phddigital.riphe78.data.CategoriaResources;
-import br.com.phddigital.riphe78.domain.Item;
+import br.com.phddigital.riphe78.domain.Promocao;
 
-public class PromocoesService implements ServiceDao<Item> {
-    private CategoriaResources categoriaResources;
-
+public class PromocoesService implements Service<Promocao> {
     @Override
-    public Optional<Item> save(Item entity) {
+    public Optional<List<Promocao>> select() {
 
-        return null;
+        return Optional.empty();
     }
 
     @Override
-    public Optional<Item> update(Integer id, Item newEntity) {
-
-        return null;
-    }
-
-    @Override
-    public Optional<List<Item>> select() {
-        return null;
-    }
-
-    @Override
-    public Optional<Item> select(Integer id) {
-        return null;
-    }
-
-    @Override
-    public Optional<Boolean> delete(Integer id) {
-
-        return null;
+    public Optional<List<Promocao>> select(String value) {
+        return Optional.empty();
     }
 }

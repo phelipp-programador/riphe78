@@ -4,27 +4,25 @@ import java.util.List;
 import java.util.Optional;
 
 import br.com.phddigital.riphe78.config.RetrofitConfig;
-import br.com.phddigital.riphe78.data.DestaqueResources;
+import br.com.phddigital.riphe78.data.ItemResources;
 import br.com.phddigital.riphe78.domain.Item;
 
-public class DestaqueService implements Service<Item> {
-    private final DestaqueResources resources;
+public class ItemService implements Service<Item> {
+    private final ItemResources resources;
 
-    public DestaqueService() {
-        resources = RetrofitConfig.factory().create(DestaqueResources.class);
-
+    public ItemService() {
+        resources = RetrofitConfig.factory().create(ItemResources.class);
     }
+
 
     @Override
     public Optional<List<Item>> select() {
-       return get(resources.select());
-
+        return get(resources.select());
 
     }
 
     @Override
     public Optional<List<Item>> select(String value) {
-
         return get(resources.select(value));
     }
 }

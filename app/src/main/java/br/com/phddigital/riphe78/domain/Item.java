@@ -10,6 +10,6 @@ public class Item implements MVP.Model{
     private double valor;
     private String urlImage;
     private Loja loja;
-
+    private int pontuacao;
 
 }

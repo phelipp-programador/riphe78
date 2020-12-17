@@ -1,5 +1,7 @@
 package br.com.phddigital.riphe78.ui.home;
 
+import androidx.annotation.NonNull;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -10,24 +12,28 @@ import br.com.phddigital.riphe78.domain.Item;
 import br.com.phddigital.riphe78.service.CategoriaService;
 import br.com.phddigital.riphe78.service.DestaqueService;
 import br.com.phddigital.riphe78.service.PromocoesService;
+import br.com.phddigital.riphe78.service.Service;
 
 public class HomePresenter implements HomeContract.Presenter {
 
-    private CategoriaService categoriaService;
-    private PromocoesService promocoesService;
-    private DestaqueService destaqueService;
+    private final Service categoriaService;
+    private final Service promocaosService;
+    private final Service destaqueService;
     private  HomeContract.ViewImple view;
 
-    public HomePresenter(HomeContract.ViewImple view) {
-        categoriaService = new CategoriaService();
-        promocoesService = new PromocoesService();
-        destaqueService = new DestaqueService();
+
+
+    public HomePresenter(@NonNull HomeContract.ViewImple view) {
+        this.categoriaService = new CategoriaService();
+        this.promocaosService = new PromocoesService();
+        this.destaqueService = new DestaqueService();
         this.view = view;
     }
 
     @Override
     public void listarPromocoes() {
-        Optional<List<Item>> promocoes = promocoesService.select();
+
+        Optional<List<Item>> promocoes = promocaosService.select();
         if(promocoes.isPresent()) {
             ItemAdapter itemAdapter = new ItemAdapter(promocoes.get());
             view.visualizarPromocoes(itemAdapter);
@@ -36,7 +42,7 @@ public class HomePresenter implements HomeContract.Presenter {
 
     @Override
     public void listarDestaques() {
-        Optional<List<Item>> destaque = promocoesService.select();
+        Optional<List<Item>> destaque = destaqueService.select();
         if(destaque.isPresent()) {
             ItemAdapter itemAdapter = new ItemAdapter(destaque.get());
             view.visualizarDestaques(itemAdapter);

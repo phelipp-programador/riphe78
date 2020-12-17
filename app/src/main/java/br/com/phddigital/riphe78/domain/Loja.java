@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 public class Loja implements MVP.Model{
-    private Long id;
+    private Integer id;
     private String nome;
     private String urlLogo;
 
